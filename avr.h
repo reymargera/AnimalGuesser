@@ -18,4 +18,5 @@
 void ini_avr(void);
 void wait_avr(unsigned short msec);
 
+unsigned char buttonPressed(unsigned char row, unsigned char column);
 #endif

@@ -96,7 +96,25 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="avr.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="avr.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="GameIntro.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="FinalProject.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="GameIntro.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
