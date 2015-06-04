@@ -44,16 +44,17 @@ void askAQuestion() {
                 // append false to the animalTrait[][]
             }
         }
-        
-        // If button(#1) pressed (Yes)
-        if(buttonPressed(0,4)) {
-            // apend true to the animalTrait[][]
-            
-        }
         else
         {
-            // append false to the animalTrait[][]
+            // If button(#1) pressed (Yes)
+            if(buttonPressed(0,4)) {
+                // apend true to the animalTrait[][]
+            
+            }
+            else
+            {
+                // append false to the animalTrait[][]
+            }
         }
     }
-
 }
