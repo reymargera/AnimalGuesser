@@ -11,7 +11,7 @@
 
 void askAQuestion() {
     int numberOfQuestions = questionBank.sizeof();
-    bool animalTraits[][];
+    bool animalTraits[10];
     
     for(int i=0; i < numberOfQuestions; i++)
     {
@@ -26,6 +26,7 @@ void askAQuestion() {
         // Question 5 so forth . . .
         if(i>=5)
         {
+            clr_lcd();
             pos_lcd(0,0);
             sprintf(buffer, "Is your animal . . .");
             puts_lcd2(buffer);
@@ -34,26 +35,36 @@ void askAQuestion() {
             sprintf(buffer, questionBank[i]);
             puts_lcd2(buffer);
             
-            // If button(#1) pressed (Yes)
-            if(buttonPressed(0,4)) {
-                // apend true to the animalTrait[][]
-                
-            }
-            else
-            {
-                // append false to the animalTrait[][]
+            while(true) {
+                // If button(#1) pressed (Yes)
+                if(buttonPressed(0,4)) {
+                    // apend true to the animalTrait[]
+                    animalTraits.append(true);
+                    break;
+                }
+                if(buttonPressed(1,4))
+                {
+                    // append false to the animalTrait[]
+                    animalTraits.append(false);
+                    break;
+                }
             }
         }
         else
         {
-            // If button(#1) pressed (Yes)
-            if(buttonPressed(0,4)) {
-                // apend true to the animalTrait[][]
-            
-            }
-            else
-            {
-                // append false to the animalTrait[][]
+            while(true) {
+                // If button(#1) pressed (Yes)
+                if(buttonPressed(0,4)) {
+                    // apend true to the animalTrait[]
+                    animalTraits.append(true);
+                    break;
+                }
+                if(buttonPressed(1,4))
+                {
+                    // append false to the animalTrait[]
+                    animalTraits.append(false);
+                    break;
+                }
             }
         }
     }
