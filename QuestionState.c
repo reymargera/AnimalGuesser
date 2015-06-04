@@ -33,12 +33,26 @@ void askAQuestion() {
             pos_lcd(1,0);
             sprintf(buffer, questionBank[i]);
             puts_lcd2(buffer);
+            
+            // If button(#1) pressed (Yes)
+            if(buttonPressed(0,4)) {
+                // apend true to the animalTrait[][]
+                
+            }
+            else
+            {
+                // append false to the animalTrait[][]
+            }
         }
         
         // If button(#1) pressed (Yes)
         if(buttonPressed(0,4)) {
+            // apend true to the animalTrait[][]
             
-            
+        }
+        else
+        {
+            // append false to the animalTrait[][]
         }
     }
 
