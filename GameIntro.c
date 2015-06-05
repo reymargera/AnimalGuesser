@@ -10,6 +10,7 @@
 //Prints game title to the LCD
 void printTitleScreen()
 {
+	clr_lcd();
 	pos_lcd(0,0);
 	sprintf(buffer, "10 Question");
 	puts_lcd2(buffer);
@@ -28,7 +29,7 @@ void printInstructions()
 	pos_lcd(1,0);
 	sprintf(buffer, "I will ask you");
 	puts_lcd2(buffer);
-	wait_avr(500);
+	wait_avr(1500);
 	
 	clr_lcd();
 	pos_lcd(0,0);
@@ -37,7 +38,7 @@ void printInstructions()
 	pos_lcd(1,0);
 	sprintf(buffer, "10 question");
 	puts_lcd2(buffer);
-	wait_avr(500);
+	wait_avr(1500);
 	
 	clr_lcd();
 	pos_lcd(0,0);
@@ -46,7 +47,7 @@ void printInstructions()
 	pos_lcd(1,0);
 	sprintf(buffer, "And I will");
 	puts_lcd2(buffer);
-	wait_avr(500);
+	wait_avr(1500);
 	
 	clr_lcd();
 	pos_lcd(0,0);
@@ -55,7 +56,7 @@ void printInstructions()
 	pos_lcd(1,0);
 	sprintf(buffer, "Guess it");
 	puts_lcd2(buffer);
-	wait_avr(500);
+	wait_avr(1500);
 	
 	clr_lcd();
 	pos_lcd(0,0);
@@ -69,15 +70,17 @@ void printInstructions()
 
 void gameIntro() 
 {
+	
 	printTitleScreen();
 	
 	//Wait for player to press A to start
 	while(!buttonPressed(0,7));
 	
+	wait_avr(500);
 	//Loop through instruction until A pressed
+	printInstructions();
 	while(!buttonPressed(0,7))
 	{
-		printInstructions();
-		wait_avr(100);
+	
 	}
 }

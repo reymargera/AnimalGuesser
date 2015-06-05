@@ -15,8 +15,9 @@ void askQuestions() {
     
     for(int i=0; i < numberOfQuestions; i++)
     {
+		clr_lcd();
         pos_lcd(0,0);
-        sprintf(buffer, "Does your animal . . .");
+        sprintf(buffer, "Does your animal");
         puts_lcd2(buffer);
         
         pos_lcd(1,0);
@@ -28,7 +29,7 @@ void askQuestions() {
         {
             clr_lcd();
             pos_lcd(0,0);
-            sprintf(buffer, "Is your animal . . .");
+            sprintf(buffer, "Is your animal");
             puts_lcd2(buffer);
             
             pos_lcd(1,0);
@@ -40,12 +41,14 @@ void askQuestions() {
                 if(buttonPressed(0,4)) {
                     // apend true to the animalTrait[]
                     thisAnimalTraits[i] = true;
+					wait_avr(1000);
                     break;
                 }
                 if(buttonPressed(1,4))
                 {
                     // append false to the animalTrait[]
                     thisAnimalTraits[i] = false;
+					wait_avr(1000);
                     break;
                 }
             }
@@ -57,12 +60,14 @@ void askQuestions() {
                 if(buttonPressed(0,4)) {
                     // apend true to the animalTrait[]
                     thisAnimalTraits[i] = true;
+					wait_avr(1000);
                     break;
                 }
                 if(buttonPressed(1,4))
                 {
                     // append false to the animalTrait[]
                     thisAnimalTraits[i] = false;
+					wait_avr(1000);
                     break;
                 }
             }
@@ -119,7 +124,50 @@ void askQuestions() {
 			puts_lcd2(buffer);
 			
 			pos_lcd(1,0);
-			//Add function to allow typing
+			char typing = 1;
+			unsigned char button, prevButton, oldestButton = 0;
+			unsigned char column = 0;
+			unsigned char times;
+			char letter;
+			
+			while (typing)
+			{
+				times = 1;
+				
+				//Waits for input
+				while(!button)
+				{
+					button = scanKeypad();
+				}
+				
+				//If "A" (enter) is pressed it stops
+				if(button == 4)
+				{
+					typing = 0;
+					continue;
+				}
+				
+				//Checks how many times the same button was pressed
+				if(button == prevButton)
+					times = 2;
+				if (button == prevButton && button == oldestButton)
+					times = 3;
+				
+				//Gets the letter corresponding to the button press
+				letter = decodeButton(button,times);
+				
+				//if its not the same as the previous one the cursor moves forward
+				if(prevButton != 0 && button != prevButton)
+					column++;
+					
+				pos_lcd(1,column);
+				sprintf(buffer, letter);
+				puts_lcd2(buffer);
+	
+				oldestButton = prevButton;
+				prevButton = button;
+				button = 0;
+			}
 		}
 	}
 }

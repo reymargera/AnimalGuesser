@@ -19,4 +19,7 @@ void ini_avr(void);
 void wait_avr(unsigned short msec);
 
 unsigned char buttonPressed(unsigned char row, unsigned char column);
+unsigned char scanKeypad();
+char decodeButton(unsigned char button, unsigned char times);
+
 #endif

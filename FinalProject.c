@@ -11,9 +11,11 @@
 #include "lcd.h"
 #include "GameIntro.h"
 #include "QuestionState.h"
-
+ 
 int main(void)
 {
+	ini_avr();
+	ini_lcd();
 	//Variable to hold the state of the program, initialized to initial state
 	unsigned char currentState = 0;
     while(1)
