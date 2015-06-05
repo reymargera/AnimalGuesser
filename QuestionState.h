@@ -16,6 +16,10 @@ const char questionBank[] = {"Have 4 legs?", "Walk on land?","Eat only meat", "H
 							  "Domesticated?", "Found at a zoo?", "Eaten by people", "A mammal?", "Deadly?"};
 
 
+char animal[] = {"Dog", "Cat", "Cow", "Fish", "Bird", "Bear", "Chicken"};
+
+
+
 bool animalCharacteristics [7][10] = 
 {
 	{true, true, true, true, true, true, false, false, true, true}, //Doge
