@@ -10,6 +10,7 @@
 #include "avr.h"
 #include "lcd.h"
 #include "GameIntro.h"
+#include "QuestionState.h"
 
 int main(void)
 {
@@ -30,21 +31,6 @@ int main(void)
 				askQuestions();
 				break;
 				
-			//Guess Animal 
-			case 2:
-				guess();
-				break;
-			
-			//Correct Answer State
-			case 3:
-				correctAnswer();
-				break;
-			
-			//Wrong Answer State
-			case 4:
-				wrongAnswer();
-				break;
-			
 			default:
 				gameIntro();
 		}     

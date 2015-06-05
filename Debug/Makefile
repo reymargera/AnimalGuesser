@@ -40,7 +40,8 @@ C_SRCS +=  \
 ../avr.c \
 ../GameIntro.c \
 ../FinalProject.c \
-../lcd.c
+../lcd.c \
+../QuestionState.c
 
 
 PREPROCESSING_SRCS += 
@@ -53,25 +54,29 @@ OBJS +=  \
 avr.o \
 GameIntro.o \
 FinalProject.o \
-lcd.o
+lcd.o \
+QuestionState.o
 
 OBJS_AS_ARGS +=  \
 avr.o \
 GameIntro.o \
 FinalProject.o \
-lcd.o
+lcd.o \
+QuestionState.o
 
 C_DEPS +=  \
 avr.d \
 GameIntro.d \
 FinalProject.d \
-lcd.d
+lcd.d \
+QuestionState.d
 
 C_DEPS_AS_ARGS +=  \
 avr.d \
 GameIntro.d \
 FinalProject.d \
-lcd.d
+lcd.d \
+QuestionState.d
 
 OUTPUT_FILE_PATH +=FinalProject.elf
 
@@ -87,6 +92,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

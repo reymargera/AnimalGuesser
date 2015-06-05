@@ -2,16 +2,16 @@
 //  QuestionState.c
 //  
 //
-//  Created by Kay Lab on 6/3/15.
+//  Created by Chia Huang on 6/3/15.
 //
 //
 
 #include "QuestionState.h"
 
 
-void askAQuestion() {
-    int numberOfQuestions = questionBank.sizeof();
-    bool animalTraits[10];
+void askQuestions() {
+    int numberOfQuestions = 10;
+    bool thisAnimalTraits[10];
     
     for(int i=0; i < numberOfQuestions; i++)
     {
@@ -70,23 +70,24 @@ void askAQuestion() {
     }
     int max = 0;
     int pos = 0;
-    for (int i=0; i<x; i++) {
+    for (int i=0; i<7; i++) {
         int count = 0;
-        for(int j=0; j<y; j++)
+        for(int j=0; j<10; j++)
         {
-            if(thisAnimalTraits[0][j] == animalCharactertistics[i][j])
+            if(thisAnimalTraits[j] == animalCharacteristics[i][j])
             {
                 count++;
             }
         }
         if(count > max)
         {
+			max = count;
             pos = i;
         }
     }
     
     
-    clr_lcd()
+    clr_lcd();
     
     pos_lcd(0,0);
     sprintf(buffer, "Your animal is . . .");
@@ -96,24 +97,29 @@ void askAQuestion() {
     sprintf(buffer, animal[pos]);
     puts_lcd2(buffer);
     
-    // YES - correct answer done
-    if(buttonPressed(0,4))
-    {
-        clr_lcd()
-        
-        pos_lcd(0,0);
-        sprintf(buffer, "Play again?");
-        puts_lcd2(buffer);
-    }
-    // NO - wrong answer append the trait into an array
-    if(buttonPressed(1,4))
-    {
-        for (int i=x-1; i<x; i++) {
-            for(int j=0; j<y; j++)
-            {
-                // APPEND THE NEW ANIMAL TRAIT TO THE CHARACTERISTICS
-            }
-        }
-    }
-
+	while(true)
+	{
+		// YES - correct answer done
+		if(buttonPressed(0,4))
+		{
+			clr_lcd();
+			        
+			pos_lcd(0,0);
+			sprintf(buffer, "Play again?");
+			puts_lcd2(buffer);
+			break;
+		}
+	
+		// NO - wrong answer append the trait into an array
+		if(buttonPressed(1,4))
+		{
+			clr_lcd();
+			pos_lcd(0,0);
+			sprintf(buffer, "What was it?");
+			puts_lcd2(buffer);
+			
+			pos_lcd(1,0);
+			//Add function to allow typing
+		}
+	}
 }
