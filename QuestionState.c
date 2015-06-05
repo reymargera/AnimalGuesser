@@ -39,13 +39,13 @@ void askAQuestion() {
                 // If button(#1) pressed (Yes)
                 if(buttonPressed(0,4)) {
                     // apend true to the animalTrait[]
-                    animalTraits.append(true);
+                    animalTraits[i] = true;
                     break;
                 }
                 if(buttonPressed(1,4))
                 {
                     // append false to the animalTrait[]
-                    animalTraits.append(false);
+                    animalTraits[i] = false;
                     break;
                 }
             }
@@ -56,13 +56,13 @@ void askAQuestion() {
                 // If button(#1) pressed (Yes)
                 if(buttonPressed(0,4)) {
                     // apend true to the animalTrait[]
-                    animalTraits.append(true);
+                    animalTraits[i] = true;
                     break;
                 }
                 if(buttonPressed(1,4))
                 {
                     // append false to the animalTrait[]
-                    animalTraits.append(false);
+                    animalTraits[i] = false;
                     break;
                 }
             }
