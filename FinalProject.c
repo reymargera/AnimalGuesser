@@ -31,6 +31,7 @@ int main(void)
 			//Question Asking State
 			case 1:
 				askQuestions();
+				currentState = 0;
 				break;
 				
 			default:

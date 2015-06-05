@@ -95,7 +95,7 @@ void askQuestions() {
     clr_lcd();
     
     pos_lcd(0,0);
-    sprintf(buffer, "Your animal is . . .");
+    sprintf(buffer, "Your animal is a");
     puts_lcd2(buffer);
     
     pos_lcd(1,0);
@@ -108,10 +108,18 @@ void askQuestions() {
 		if(buttonPressed(0,4))
 		{
 			clr_lcd();
-			        
 			pos_lcd(0,0);
-			sprintf(buffer, "Play again?");
+			sprintf(buffer, "I knew I was");
 			puts_lcd2(buffer);
+			pos_lcd(1,0);
+			sprintf(buffer, "smarter than you");
+			puts_lcd2(buffer);
+			wait_avr(2000);
+			clr_lcd();
+			pos_lcd(0,0);
+			sprintf(buffer, "Lets play again");
+			puts_lcd2(buffer);
+			wait_avr(2000);
 			break;
 		}
 	
@@ -123,7 +131,7 @@ void askQuestions() {
 			sprintf(buffer, "What was it?");
 			puts_lcd2(buffer);
 			
-			pos_lcd(1,0);
+			wait_avr(500);
 			char typing = 1;
 			unsigned char button, prevButton, oldestButton = 0;
 			unsigned char column = 0;
@@ -135,11 +143,12 @@ void askQuestions() {
 				times = 1;
 				
 				//Waits for input
-				while(!button)
+				while(button == 0)
 				{
 					button = scanKeypad();
 				}
 				
+				wait_avr(500);
 				//If "A" (enter) is pressed it stops
 				if(button == 4)
 				{
