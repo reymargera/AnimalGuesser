@@ -98,17 +98,17 @@ char decodeButton(unsigned char button, unsigned char times)
 			if (times == 1)
 				return 'p';
 			else if (times == 2)
-				return 'q';
-			else
 				return 'r';
+			else
+				return 's';
 				
 		case 10:
 			if (times == 1)
-				return 's';
-			else if (times == 2)
 				return 't';
-			else
+			else if (times == 2)
 				return 'u';
+			else
+				return 'v';
 		
 		case 11:
 			if (times == 1)

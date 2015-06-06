@@ -16,7 +16,7 @@
 
 char buffer[20];
 static char *questionBank[10] = {"Have 4 legs?", "Walk on land?","Eat only meat", "Have claws?", "Move fast?", "Domesticated?", "Found at a zoo?", "Eaten by people", "A mammal?", "Deadly?"};
-static char *animal[7] = {"Dog", "Cat", "Cow", "Fish", "Bird", "Bear", "Chicken"};
+static char *animal[8] = {"Dog", "Cat", "Cow", "Fish", "Bird", "Bear", "Chicken", ""};
 static bool animalCharacteristics[8][10]  =
 {
 	{true, true, true, true, true, true, false, false, true, true}, //Doge

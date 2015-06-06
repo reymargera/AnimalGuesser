@@ -133,14 +133,14 @@ void askQuestions() {
 			
 			wait_avr(500);
 			char typing = 1;
-			unsigned char button, prevButton, oldestButton = 0;
+			unsigned char button, letterWanted = 0;
 			unsigned char column = 0;
-			unsigned char times;
+			unsigned char times = 0;
 			char letter;
-			
+			char newAnimal[20] = "";
+			wait_avr(500);
 			while (typing)
-			{
-				times = 1;
+			{				
 				
 				//Waits for input
 				while(button == 0)
@@ -149,34 +149,72 @@ void askQuestions() {
 				}
 				
 				wait_avr(500);
+				
 				//If "A" (enter) is pressed it stops
 				if(button == 4)
 				{
 					typing = 0;
+					wait_avr(1000);
 					continue;
 				}
 				
-				//Checks how many times the same button was pressed
-				if(button == prevButton)
-					times = 2;
-				if (button == prevButton && button == oldestButton)
-					times = 3;
+				sprintf(buffer, "-");
+				pos_lcd(1,column);
+				puts_lcd2(buffer);
+				wait_avr(1500);
 				
+				while (letterWanted == 0)
+				{
+					letterWanted = scanKeypad();
+				}
+				
+				wait_avr(1500);
+				
+				if (letterWanted == 8)
+					times = 1;
+				else if (letterWanted == 12)
+					times = 2;
+				else if (letterWanted == 16)
+					times = 3;			
+										
 				//Gets the letter corresponding to the button press
 				letter = decodeButton(button,times);
-				
-				//if its not the same as the previous one the cursor moves forward
-				if(prevButton != 0 && button != prevButton)
-					column++;
-					
-				pos_lcd(1,column);
-				sprintf(buffer, letter);
+				newAnimal[column] = letter;
+				clr_lcd();
+				pos_lcd(0,0);
+				sprintf(buffer, "What was it?");
 				puts_lcd2(buffer);
-	
-				oldestButton = prevButton;
-				prevButton = button;
+				
+				pos_lcd(1,0);
+				sprintf(buffer, newAnimal);
+				puts_lcd2(buffer);
+				
+				letterWanted = 0;
 				button = 0;
+				column++;
 			}
+			
+			clr_lcd();
+			pos_lcd(0,0);
+			sprintf(buffer, "Thanks I'll");
+			puts_lcd2(buffer);
+			pos_lcd(1,0);
+			sprintf(buffer, "remember that");
+			puts_lcd2(buffer);
+			
+			//Adds new animal traits to saved animals
+			for(int i = 0; i < 10; i++)
+				animalCharacteristics[7][i] = thisAnimalTraits[i];
+			
+			animal[7] = newAnimal;
+			sprintf(buffer, animal[7]);
+			clr_lcd();
+			pos_lcd(0,0);
+			puts_lcd2(buffer);
+			typing = 0;
+			break;
+			
 		}
+		
 	}
 }
